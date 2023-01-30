@@ -14,7 +14,14 @@ module Api
       end
 
       serialized_scores = scores.map do |score|
-        score.serialize(users_map[score.user_id])
+        {
+          id: score.id,
+          user_id: score.user_id,
+          user_name: users_map[score.user_id],
+          total_score: score.total_score,
+          played_at: score.played_at,
+        }
+
       end
 
       response = {
