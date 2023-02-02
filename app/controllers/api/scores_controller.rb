@@ -5,23 +5,10 @@ module Api
     before_action :validate_score_user_id, only: :destroy
 
     def user_feed
-      scores = Score.all.order(played_at: :desc, id: :desc)
-      users = User.all
-
-      users_map = {}
-      users.each do |user|
-        users_map[user.id] = user.name
-      end
+      scores = Score.includes(:user).all.order(played_at: :desc, id: :desc)
 
       serialized_scores = scores.map do |score|
-        {
-          id: score.id,
-          user_id: score.user_id,
-          user_name: users_map[score.user_id],
-          total_score: score.total_score,
-          played_at: score.played_at,
-        }
-
+        score.serialize
       end
 
       response = {

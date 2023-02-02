@@ -7,7 +7,7 @@ class Score < ApplicationRecord
   validates :total_score, inclusion: { in: 54..120 }
   validate :future_score
 
-  def serialize
+  def serialize()
     {
       id: id,
       user_id: user_id,
