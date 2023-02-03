@@ -3,7 +3,6 @@
 # - played_at: date when the score was played
 class Score < ApplicationRecord
   belongs_to :user
-
   validates :total_score, inclusion: { in: 54..120 }
   validate :future_score
 

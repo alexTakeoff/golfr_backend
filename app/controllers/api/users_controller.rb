@@ -25,7 +25,8 @@ module Api
 
       puts params[:id]
 
-      scores = Score.all.order(played_at: :desc, id: :desc)
+      scores = Score.includes(:user).all.order(played_at: :desc, id: :desc)
+
       scores = scores.where(user_id: @user.id)
 
       serialized_scores = scores.map do |score|
