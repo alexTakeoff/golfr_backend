@@ -17,7 +17,6 @@ module Api
       }
 
       render json: response.to_json
-
     end
 
     def show
@@ -25,8 +24,7 @@ module Api
 
       puts params[:id]
 
-      scores = Score.all.order(played_at: :desc, id: :desc)
-      scores = scores.where(user_id: @user.id)
+      scores = Score.where(user_id: @user.id).order(played_at: :desc, id: :desc)
 
       serialized_scores = scores.map do |score|
         {
@@ -43,7 +41,6 @@ module Api
       }
 
       render json: response.to_json
-
     end
 
     def login
