@@ -2,11 +2,6 @@ require 'rails_helper'
 
 describe Api::ScoresController, type: :request do
 
-  def user_feed_path
-    '/api/feed'
-  end
-
-
   before :each do
     @user1 = create(:user, name: 'User1', email: 'user1@email.com', password: 'userpass')
     user2 = create(:user, name: 'User2', email: 'user2@email.com', password: 'userpass')
@@ -112,8 +107,10 @@ describe Api::ScoresController, type: :request do
   end
 
   it 'should return at most 25 scores' do
-    get user_feed_path
+    get api_feed_path
+
     expect(response).to have_http_status(:ok)
+
     returned_scores = JSON.parse(response.body)["scores"]
     expect(returned_scores.length).to be <= 25
   end
