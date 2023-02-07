@@ -22,9 +22,7 @@ module Api
     def show
       @user = User.find(params[:id])
 
-      puts params[:id]
-
-      scores = Score.where(user_id: @user.id).order(played_at: :desc, id: :desc)
+      scores = Score.includes(:user).where(user_id: @user.id).order(played_at: :desc, id: :desc)
 
       serialized_scores = scores.map do |score|
         {
