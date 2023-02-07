@@ -33,7 +33,7 @@ describe Api::ScoresController, type: :request do
     it 'should save and return the new score if valid parameters' do
       score_count = Score.count
 
-      post api_scores_path, params: { score: { total_score: 79, played_at: '2021-06-29' }}
+      post api_scores_path, params: { score: { total_score: 79, played_at: '2021-06-29' } }
 
       expect(response).to have_http_status(:ok)
       expect(Score.count).to eq score_count + 1
@@ -53,7 +53,7 @@ describe Api::ScoresController, type: :request do
     it 'should return a validation error if score is played in the future' do
       score_count = Score.count
 
-      post api_scores_path, params: { score: { total_score: 79, played_at: '2090-06-29' }}
+      post api_scores_path, params: { score: { total_score: 79, played_at: '2090-06-29' } }
 
       expect(response).not_to have_http_status(:ok)
       expect(Score.count).to eq score_count
@@ -62,7 +62,7 @@ describe Api::ScoresController, type: :request do
     it 'should return a validation error if score value is too low' do
       score_count = Score.count
 
-      post api_scores_path, params: { score: { total_score: 10, played_at: '2021-06-29' }}
+      post api_scores_path, params: { score: { total_score: 10, played_at: '2021-06-29' } }
 
       expect(response).not_to have_http_status(:ok)
       expect(Score.count).to eq score_count

@@ -30,5 +30,14 @@
 .DS_Store
 /storage/*
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+# Ignore application configuration
+/.idea
+=======
+.idea/*
+>>>>>>> main
+=======
 >>>>>>> ed47997 (solving conflicts)
 .idea/*
+>>>>>>> main

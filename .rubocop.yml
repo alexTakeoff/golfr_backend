@@ -29,7 +29,7 @@ Style/TrailingCommaInArguments:
   Enabled: false
 Layout/LineLength:
   Max: 100
-  IgnoredPatterns: ['(\A|\s)#']
+  IgnoredPatterns: [ '(\A|\s)#' ]
   Exclude:
     - 'db/**/*.rb'
 Metrics/MethodLength:

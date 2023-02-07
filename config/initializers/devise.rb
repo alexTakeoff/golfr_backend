@@ -12,8 +12,8 @@ Devise.setup do |config|
   config.jwt do |jwt|
     jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
     jwt.dispatch_requests = [
-      ['POST', /api/ ],
-      ['GET', /api/ ]
+      ['POST', /api/],
+      ['GET', /api/]
     ]
     jwt.expiration_time = Rails.env.development? ? 2.days.to_i : 12.hours.to_i
   end
