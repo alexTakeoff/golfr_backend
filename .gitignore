@@ -29,4 +29,6 @@
 /config/database.yml
 .DS_Store
 /storage/*
+
+>>>>>>> ed47997 (solving conflicts)
 .idea/*
